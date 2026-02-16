@@ -6,13 +6,12 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+// controller layer handles api requests and responses
+// extracts request body and send it to service layer
+//  client interacts with controller layer
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -41,5 +40,10 @@ public class AuthController {
     public ResponseEntity<?> logout(HttpSession session) {
         session.invalidate();
         return ResponseEntity.ok("Logged Out");
+    }
+
+    @GetMapping("/status")
+    public String backendStatus() {
+        return "CCTV Monitoring Backend Running";
     }
 }

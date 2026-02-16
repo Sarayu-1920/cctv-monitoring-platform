@@ -2,7 +2,7 @@ package com.cctv.monitoring.entity;
 
 
 import jakarta.persistence.*;
-
+// model layer contains entity class mapped to databse
 @Entity
 @Table(name = "users")
 public class User {
