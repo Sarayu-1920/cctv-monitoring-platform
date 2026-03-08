@@ -33,4 +33,21 @@ public class DeviceService {
     public Optional<Device> getDeviceById(Long id) {
         return deviceRepository.findById(id);
     }
+
+    public Device updateDevice(Long id, Device updatedDevice) {
+
+        Device device = deviceRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Device not found"));
+
+        device.setName(updatedDevice.getName());
+        device.setLocationName(updatedDevice.getLocationName());
+        device.setLatitude(updatedDevice.getLatitude());
+        device.setLongitude(updatedDevice.getLongitude());
+
+        return deviceRepository.save(device);
+    }
+
+    public void deleteDevice(Long id) {
+        deviceRepository.deleteById(id);
+    }
 }
